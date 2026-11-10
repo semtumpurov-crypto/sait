@@ -118,6 +118,12 @@
       text-align: center;
     }
 
+    /* На мобильных делаем первый экран компактнее */
+    section#home {
+      justify-content: flex-start;
+      padding-top: 140px;
+    }
+
     h2 { 
       font-size: 2.5rem; 
       margin-bottom: 30px; 
@@ -252,11 +258,18 @@
       border-top: 1px solid rgba(0, 210, 255, 0.1);
     }
 
+    /* ================= АДАПТИВ ПОД ТЕЛЕФОНЫ ================= */
     @media (max-width: 768px) {
-      .site-title { font-size: 2.5rem; }
-      .site-subtitle { font-size: 1.3rem; }
+      .header-container { padding: 80px 20px 20px; } /* Поднимаем заголовок выше */
+      .site-title { font-size: 2.2rem; letter-spacing: 1px; }
+      .site-subtitle { font-size: 1.2rem; }
+      
+      /* Поднимаем кнопку и текст на первом экране */
+      section#home { padding-top: 40px; justify-content: flex-start; }
+      section#home p { font-size: 1rem; line-height: 1.8; margin-top: 10px; margin-bottom: 30px; }
+      
+      .nav { gap: 10px; font-size: 0.85rem; padding: 10px; }
       h2 { font-size: 2rem; }
-      .nav { gap: 10px; font-size: 0.85rem; }
       section { padding: 80px 15px; }
       .glass-card { padding: 20px; }
       .phone-link { font-size: 1.5rem; }
@@ -321,7 +334,7 @@
   </section>
 
   <footer>
-    <p>© 2026 Синие воды. Запись к Гульнаре.</p>
+    <p>© 2026 Синие воды. Записки к Гульнаре.</p>
   </footer>
 
 </body>
