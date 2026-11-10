@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Совершенная несовершенность | Процедуры и уход</title>
+  <title>Совершенное несовершенство | Процедуры и уход</title>
   
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -14,22 +14,19 @@
       color: #fff;
       line-height: 2.6;
       
-      /* ГРАДИЕНТ В СТИЛЕ GTA 6 + НЕОНОВЫЕ СКИНЫ CS */
+      /* ГРАДИЕНТ ТОЧЬ-В-ТОЧЬ КАК НА СКИНЕ UMP (Желтый -> Розовый -> Фиолетовый) */
       background: 
-        /* 1. Яркие неоновые пятна (розовый, фиолетовый, оранжевый, бирюзовый) */
-        radial-gradient(circle at 10% 10%, rgba(255, 0, 150, 0.6) 0%, transparent 50%),
-        radial-gradient(circle at 90% 80%, rgba(255, 100, 0, 0.5) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.4) 0%, transparent 40%),
-        radial-gradient(circle at 20% 90%, rgba(138, 43, 226, 0.6) 0%, transparent 50%),
-        /* 2. Основной переливающийся линейный градиент (закат + неон) */
+        /* Мягкие световые блики, чтобы фон не был плоским */
+        radial-gradient(circle at 10% 10%, rgba(255, 230, 0, 0.5) 0%, transparent 60%),
+        radial-gradient(circle at 90% 90%, rgba(200, 0, 255, 0.6) 0%, transparent 60%),
+        
+        /* Основной линейный градиент */
         linear-gradient(135deg, 
-          #0d0221 0%,   /* Глубокий фиолетовый */
-          #2b1055 15%,  /* Темно-фиолетовый */
-          #631c6e 30%,  /* Пурпурный */
-          #c82066 45%,  /* Розово-красный (GTA закат) */
-          #ff7b00 60%,  /* Яркий оранжевый */
-          #00d2ff 80%,  /* Неоновый бирюзовый (CS стиль) */
-          #001f3f 100%  /* Темно-синий */
+          #ffcc00 0%,   /* Золотисто-желтый */
+          #ff8800 20%,  /* Оранжевый */
+          #ff007a 45%,  /* Ярко-розовый */
+          #d400ff 70%,  /* Фиолетовый */
+          #4b0082 100%  /* Глубокий темно-фиолетовый */
         );
       background-attachment: fixed;
       position: relative;
@@ -37,14 +34,12 @@
       overflow-x: hidden;
     }
 
-    /* ДОПОЛНИТЕЛЬНЫЙ СЛОЙ ДЛЯ МЯГКОСТИ (размытие пятен) */
-    body::before {
-      content: ""; position: fixed; inset: 0; z-index: -2;
-      background:
-        radial-gradient(circle at 40% 40%, rgba(255, 0, 150, 0.3) 0%, transparent 60%),
-        radial-gradient(circle at 60% 60%, rgba(0, 210, 255, 0.3) 0%, transparent 60%);
-      background-repeat: no-repeat;
-      filter: blur(80px); /* Сильное размытие для эффекта "дыма" */
+    /* Легкое затемнение, чтобы текст был читаемым на желтом */
+    body::after {
+      content: "";
+      position: fixed; inset: 0; z-index: -1;
+      background: rgba(0, 0, 0, 0.2); 
+      pointer-events: none;
     }
 
     .header-container {
@@ -54,17 +49,16 @@
       z-index: 10;
     }
 
-    /* Уменьшил размер шрифта, чтобы длинное название влезло красиво */
     .site-title {
       font-size: 3.2rem;
       font-weight: 900;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: #fff;
+      /* Тень, чтобы текст не терялся на ярком фоне */
       text-shadow: 
-        0 0 10px rgba(255, 0, 150, 0.8),
-        0 0 20px rgba(255, 100, 0, 0.6),
-        0 0 40px rgba(0, 210, 255, 0.5);
+        0 0 10px rgba(0, 0, 0, 0.9),
+        0 0 20px rgba(255, 0, 150, 0.8);
       animation: pulseGlow 3s infinite alternate;
       margin-bottom: 10px;
       line-height: 1.2;
@@ -75,39 +69,37 @@
       font-weight: 600;
       color: #fff;
       letter-spacing: 1px;
-      text-shadow: 
-        0 0 10px rgba(255, 0, 150, 0.8),
-        0 0 20px rgba(0, 210, 255, 0.5);
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
     }
 
     @keyframes pulseGlow {
-      0% { text-shadow: 0 0 10px rgba(255, 0, 150, 0.8), 0 0 20px rgba(0, 210, 255, 0.5); }
-      100% { text-shadow: 0 0 20px rgba(255, 0, 150, 1), 0 0 50px rgba(255, 100, 0, 0.8); }
+      0% { text-shadow: 0 0 10px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 255, 255, 0.5); }
+      100% { text-shadow: 0 0 20px rgba(0, 0, 0, 1), 0 0 40px rgba(255, 0, 150, 0.9); }
     }
 
     .nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      background: rgba(13, 2, 33, 0.6); /* Темное стекло в тон фона */
+      background: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(10px);
       padding: 15px 20px;
       display: flex;
       justify-content: center;
       gap: 20px;
       z-index: 100;
-      border-bottom: 1px solid rgba(255, 0, 150, 0.2);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
     .nav a {
       text-decoration: none;
       color: #fff;
       font-weight: 600;
       font-size: 1rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
       transition: color 0.3s, text-shadow 0.3s;
     }
     .nav a:hover { 
-      color: #ff007a;
-      text-shadow: 0 0 10px #ff007a;
+      color: #ffcc00;
+      text-shadow: 0 0 10px #ffcc00;
     }
 
     section {
@@ -129,9 +121,7 @@
       font-size: 2.5rem; 
       margin-bottom: 30px; 
       color: #fff;
-      text-shadow: 
-        0 0 10px rgba(255, 0, 150, 0.8),
-        0 0 20px rgba(0, 210, 255, 0.5); 
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.8); 
     }
 
     p { 
@@ -139,39 +129,40 @@
       margin-bottom: 20px; 
       font-size: 1.1rem; 
       color: #fff;
-      text-shadow: 0 0 8px rgba(0, 0, 0, 0.8); /* Тень для читаемости на ярком фоне */
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
     }
 
     .hero-btn {
       display: inline-block;
       padding: 15px 40px;
-      background: rgba(255, 0, 150, 0.2);
+      background: rgba(0, 0, 0, 0.3);
       color: #fff;
       text-decoration: none;
       border-radius: 50px;
       font-size: 1.2rem;
       font-weight: bold;
-      border: 2px solid #ff007a;
+      border: 2px solid #ffcc00;
       transition: all 0.3s;
-      box-shadow: 0 4px 15px rgba(255, 0, 150, 0.4);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
       margin-top: 20px;
-      text-shadow: 0 0 5px rgba(255,255,255,0.5);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+      backdrop-filter: blur(5px);
     }
     .hero-btn:hover {
-      background: #ff007a;
-      color: #fff;
-      box-shadow: 0 0 30px rgba(255, 0, 150, 0.8);
+      background: #ffcc00;
+      color: #000;
+      box-shadow: 0 0 30px rgba(255, 204, 0, 0.8);
       transform: translateY(-5px);
       text-shadow: none;
     }
 
     .glass-card {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 0, 150, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       padding: 40px;
       border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(255, 0, 150, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
       max-width: 800px;
       width: 100%;
       margin-bottom: 20px;
@@ -186,7 +177,7 @@
     }
 
     .gallery-item {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(5px);
       height: 250px;
       border-radius: 15px;
@@ -195,10 +186,9 @@
       justify-content: center;
       color: #fff;
       font-weight: bold;
-      border: 1px solid rgba(0, 210, 255, 0.2);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
       transition: transform 0.3s, box-shadow 0.3s;
-      text-shadow: 0 0 5px rgba(0, 210, 255, 0.8);
       overflow: hidden;
     }
 
@@ -212,9 +202,8 @@
 
     .gallery-item:hover { 
       transform: scale(1.03); 
-      box-shadow: 0 0 25px rgba(0, 210, 255, 0.6);
-      border-color: rgba(0, 210, 255, 0.8);
-      background: rgba(0, 210, 255, 0.1);
+      box-shadow: 0 0 25px rgba(255, 204, 0, 0.6);
+      border-color: rgba(255, 204, 0, 0.8);
     }
 
     .gallery-item:hover img {
@@ -222,17 +211,16 @@
     }
 
     .contact-box {
-      background: rgba(0, 210, 255, 0.1);
-      border: 2px solid #00d2ff;
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid #ffcc00;
       padding: 30px;
       border-radius: 20px;
       margin-top: 20px;
-      box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+      box-shadow: 0 0 30px rgba(255, 204, 0, 0.4);
     }
     .contact-box p {
       font-size: 1.2rem;
       margin-bottom: 15px;
-      text-shadow: 0 0 10px rgba(0, 210, 255, 0.8);
     }
     .phone-link {
       display: inline-block;
@@ -240,7 +228,7 @@
       font-weight: 900;
       color: #fff;
       text-decoration: none;
-      text-shadow: 0 0 15px #00d2ff, 0 0 30px #00d2ff;
+      text-shadow: 0 0 15px #ffcc00, 0 0 30px #ff007a;
       transition: transform 0.3s;
       margin-top: 10px;
     }
@@ -249,14 +237,13 @@
     }
 
     footer {
-      background: rgba(13, 2, 33, 0.8);
+      background: rgba(0, 0, 0, 0.7);
       backdrop-filter: blur(5px);
       padding: 30px;
       text-align: center;
       color: #fff;
       font-size: 0.85rem;
-      text-shadow: 0 0 5px rgba(0, 210, 255, 0.5);
-      border-top: 1px solid rgba(255, 0, 150, 0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     @media (max-width: 768px) {
@@ -278,8 +265,7 @@
 <body>
 
   <div class="header-container">
-    <!-- Разбил на две строки для красоты -->
-    <h1 class="site-title">Совершенная<br>несовершенность</h1>
+    <h1 class="site-title">Совершенное<br>несовершенство</h1>
     <div class="site-subtitle">Запись к Гульнаре</div>
   </div>
 
@@ -334,7 +320,7 @@
   </section>
 
   <footer>
-    <p>© 2026 Совершенная несовершенность. Записки к Гульнаре.</p>
+    <p>© 2026 Совершенное несовершенство. Записки к Гульнаре.</p>
   </footer>
 
 </body>
